@@ -1,0 +1,15 @@
+{% for name in wireguard %}
+{% set wg = wireguard[name] %}
+set interfaces wireguard {{ name }} description "{{ wg.description }}"
+set interfaces wireguard {{ name }} address {{ wg.address }}
+set interfaces wireguard {{ name }} private-key "{{ wg.privkey }}"
+set interfaces wireguard {{ name }} port "{{ wg.port }}"
+{%     for peer_name in wg.peer %}
+{%     set peer = wg.peer[peer_name]%}
+set interfaces wireguard {{ name }} peer {{ peer_name}} public-key "{{ peer.pubkey }}"
+set interfaces wireguard {{ name }} peer {{ peer_name}} address "{{ peer.address }}"
+set interfaces wireguard {{ name }} peer {{ peer_name}} port "{{ peer.port }}"
+set interfaces wireguard {{ name }} peer {{ peer_name}} allowed-ips "{{ peer.allowed_ips }}"
+set interfaces wireguard {{ name }} peer {{ peer_name}} persistent-keepalive "{{ peer.persistent_keepalive }}"
+{%     endfor %}
+{% endfor %}

@@ -26,3 +26,52 @@ VPN:
     wan:
     - eth4
     - eth5
+  wireguard:
+    wg0:
+      description: "to HOME 1"
+      privkey: "YGYeYj3ksy94wTABb3pDvJ7Px2WxldnAphRjft84yUI="
+      port: 5566
+      address: 192.168.254.5/31
+      peer:
+        home1:
+          pubkey: "G2qUwjHvltkANsrsBWh1Z9GWtOBCl15ch/8tzuDCz1k="
+          address: 10.1.1.2
+          port: 5568
+          allowed_ips: "0.0.0.0/0"
+          persistent_keepalive: 15
+    wg1:
+      description: "to HOME 2"
+      privkey: "OLXvk+cp7XlU5z8qwsSqrzO3Sb3o4PRENI/EbTmHunE="
+      port: 5567
+      address: 192.168.254.7/31
+      peer:
+        home2:
+          pubkey: "eeOrYTIzVjocrJnE6yNorz5oHRYW6iQH0u9zuDfWigM="
+          address: 10.2.1.2
+          port: 5569
+          allowed_ips: "0.0.0.0/0"
+          persistent_keepalive: 15
+    wg2:
+      description: "to HQ 1"
+      privkey: "uMKvrNaGQ5wXGqPdy9l+vBf9Be2Ipx2bDlZU5H8LWmo="
+      port: 5568
+      address: 192.168.254.9/31
+      peer:
+        hq1:
+          pubkey: "t0UrOHFadMHwcw/4rgatExAu6p3o7TQb/meVRHGhKkM="
+          address: 10.1.2.2
+          port: 5568
+          allowed_ips: "0.0.0.0/0"
+          persistent_keepalive: 15
+    wg3:
+      description: "to HQ 2"
+      privkey: "YNkUzO6bqE+tFIy1tLII40ndZOVdnqWg/1S07wfsBlY="
+      port: 5569
+      address: 192.168.254.11/31
+      peer:
+        hq2:
+          pubkey: "vERIvDFoY7U/1Q0UZ4u3Q93JC9ob/4mzBnmNK3q27lY="
+          address: 10.2.2.2
+          port: 5569
+          allowed_ips: "0.0.0.0/0"
+          persistent_keepalive: 15

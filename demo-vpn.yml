@@ -45,5 +45,9 @@
     - name: set NAT
       include_role:
         name: nat
+
+    - name: set Wireguard
+      include_role:
+        name: wireguard
 #    - name: set wireguard to HQ
 #    - name: set BGP
