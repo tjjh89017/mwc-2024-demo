@@ -1,20 +1,30 @@
 {% if bgp is defined %}
 set protocols bgp system-as {{ bgp.asn }}
 
-{% for i in bgp.redistribute %}
-{%     if i %}
+{% if bgp.redistribute is defined %}
+{%     for i in bgp.redistribute %}
+{%         if i %}
 set protocols bgp address-family ipv4-unicast redistribute {{ i }}
-{%     endif %}
-{% endfor %}
+{%         endif %}
+{%     endfor %}
+{% endif %}
 
 set protocols bgp peer-group PEER address-family ipv4-unicast soft-reconfiguration inbound
 set protocols bgp peer-group PEER address-family ipv4-unicast route-map import 'WG'
 set protocols bgp peer-group PEER ebgp-multihop '64'
 set protocols bgp peer-group PEER remote-as 'external'
 
-{% for neighbor in bgp.neighbor %}
+{% if bgp.neighbor is defined %}
+{%     for neighbor in bgp.neighbor %}
 set protocols bgp neighbor {{ neighbor }} peer-group 'PEER'
-{% endfor %}
+{%     endfor %}
+{% endif %}
+
+{% if bgp.network is defined %}
+{%     for n in bgp.network %}
+set protocols bgp address-family ipv4-unicast network "{{ n }}"
+{%     endfor %}
+{% endif %}
 
 set policy prefix-list WG9999 description 'select default route'
 set policy prefix-list WG9999 rule 1 action 'permit'

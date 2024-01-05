@@ -1,3 +1,4 @@
+{% if wireguard is defined %}
 {% for name in wireguard %}
 {% set wg = wireguard[name] %}
 set interfaces wireguard {{ name }} description "{{ wg.description }}"
@@ -13,3 +14,4 @@ set interfaces wireguard {{ name }} peer {{ peer_name}} allowed-ips "{{ peer.all
 set interfaces wireguard {{ name }} peer {{ peer_name}} persistent-keepalive "{{ peer.persistent_keepalive }}"
 {%     endfor %}
 {% endfor %}
+{% endif %}

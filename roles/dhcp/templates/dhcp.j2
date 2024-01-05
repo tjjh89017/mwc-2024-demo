@@ -1,3 +1,4 @@
+{% if dhcp is defined %}
 {% for i in dhcp %}
 set service dhcp-server shared-network-name {{ i }} subnet {{ dhcp[i]['subnet'] }} default-router {{ dhcp[i]['gateway'] }}
 set service dhcp-server shared-network-name {{ i }} subnet {{ dhcp[i]['subnet'] }} lease 60
@@ -5,3 +6,4 @@ set service dhcp-server shared-network-name {{ i }} subnet {{ dhcp[i]['subnet'] 
 set service dhcp-server shared-network-name {{ i }} subnet {{ dhcp[i]['subnet'] }} range 1 start {{ dhcp[i]['range']['start'] }}
 set service dhcp-server shared-network-name {{ i }} subnet {{ dhcp[i]['subnet'] }} range 1 stop {{ dhcp[i]['range']['stop'] }}
 {% endfor %}
+{% endif %}
