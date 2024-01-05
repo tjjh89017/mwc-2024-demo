@@ -14,6 +14,9 @@ set protocols bgp peer-group PEER address-family ipv4-unicast route-map import '
 set protocols bgp peer-group PEER ebgp-multihop '64'
 set protocols bgp peer-group PEER remote-as 'external'
 
+set protocols bgp timers holdtime 15
+set protocols bgp timers keepalive 5
+
 {% if bgp.neighbor is defined %}
 {%     for neighbor in bgp.neighbor %}
 set protocols bgp neighbor {{ neighbor }} peer-group 'PEER'
