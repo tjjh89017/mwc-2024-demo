@@ -7,3 +7,12 @@
   vyos.vyos.vyos_config:
     src: ip.j2
     save: true
+
+- name: Set Interfaces IP Address
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: vyos.vyos.vyos
+    failver: "{{ hostvars[inventory_hostname][demo_name]['failover'] }}"
+  vyos.vyos.vyos_config:
+    src: failover.j2
+    save: true

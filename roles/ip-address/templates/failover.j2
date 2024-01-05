@@ -1,0 +1,24 @@
+{% if failover is defined %}
+{% for f in failover %}
+set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} check target {{ f.gateway }}
+set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} check type ARP
+{% if f.metric is defined %}
+set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} metric {{ f.metric }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+
+{% for i in interfaces %}
+{% set intf = interfaces[i] %}
+set interface ethernet {{ i }} address {{ intf['address'] }}
+
+{% if intf['gateway'] is defined %}
+{%     if intf['metric'] is defined %}
+set protocols static route 0.0.0.0/0 next-hop {{ intf['gateway'] }} distance {{ intf['metric'] }}
+{%     else %}
+set protocols static route 0.0.0.0/0 next-hop {{ intf['gateway'] }}
+{%     endif %}
+{% endif %}
+{% endfor %}
