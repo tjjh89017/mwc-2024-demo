@@ -4,7 +4,6 @@ set protocols bgp address-family ipv4-unicast redistribute connected
 set protocols bgp peer-group PEER address-family ipv4-unicast soft-reconfiguration inbound
 set protocols bgp peer-group PEER ebgp-multihop '64'
 set protocols bgp peer-group PEER remote-as 'external'
-set protocols bgp parameters bestpath as-path multipath-relax
 {% for neighbor in bgp.neighbor %}
 set protocols bgp neighbor {{ neighbor }} peer-group 'PEER'
 {% endfor %}

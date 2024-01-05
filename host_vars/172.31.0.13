@@ -77,3 +77,10 @@ VPN:
           port: 5567
           allowed_ips: "0.0.0.0/0"
           persistent_keepalive: 15
+  bgp:
+    asn: 65003
+    neighbor:
+    - 192.168.254.1
+    - 192.168.254.3
+    - 192.168.254.5
+    - 192.168.254.7

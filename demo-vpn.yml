@@ -49,5 +49,7 @@
     - name: set Wireguard
       include_role:
         name: wireguard
-#    - name: set wireguard to HQ
-#    - name: set BGP
+
+    - name: set BGP
+      include_role:
+        name: bgp

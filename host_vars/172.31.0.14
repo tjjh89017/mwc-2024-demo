@@ -75,3 +75,10 @@ VPN:
           port: 5569
           allowed_ips: "0.0.0.0/0"
           persistent_keepalive: 15
+  bgp:
+    asn: 65004
+    neighbor:
+    - 192.168.254.0
+    - 192.168.254.2
+    - 192.168.254.9
+    - 192.168.254.11
