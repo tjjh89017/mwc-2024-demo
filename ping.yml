@@ -1,0 +1,7 @@
+---
+- hosts: ALL
+  gather_facts: no
+  tasks:
+    - name: Test Connection
+      ping:
+      register: msg
