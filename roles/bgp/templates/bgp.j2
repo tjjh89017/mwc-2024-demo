@@ -1,10 +1,17 @@
 {% if bgp is defined %}
 set protocols bgp system-as {{ bgp.asn }}
-set protocols bgp address-family ipv4-unicast redistribute connected
+
+{% for i in bgp.redistribute %}
+{%     if i %}
+set protocols bgp address-family ipv4-unicast redistribute {{ i }}
+{%     endif %}
+{% endfor %}
+
 set protocols bgp peer-group PEER address-family ipv4-unicast soft-reconfiguration inbound
 set protocols bgp peer-group PEER address-family ipv4-unicast route-map import 'WG'
 set protocols bgp peer-group PEER ebgp-multihop '64'
 set protocols bgp peer-group PEER remote-as 'external'
+
 {% for neighbor in bgp.neighbor %}
 set protocols bgp neighbor {{ neighbor }} peer-group 'PEER'
 {% endfor %}

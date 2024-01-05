@@ -14,6 +14,8 @@ VPN:
       address: 10.0.0.3/31
   bgp:
     asn: 65002
+    redistribute:
+      connected: true
     neighbor:
     - 10.0.0.0
     - 10.0.0.2
