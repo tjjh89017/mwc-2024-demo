@@ -12,6 +12,18 @@ VPN:
   - gateway: 10.2.3.1
     interface: eth5
     metric: 100
+  policy:
+    1:
+     fwmark: 1
+     table: 11
+   2:
+     fwmark: 2
+     table: 12
+  table:
+    11:
+      gateway: 10.1.3.1
+   12:
+      gateway: 10.2.3.1
   bridge:
     address: 192.168.3.1/24
     member:
@@ -32,6 +44,7 @@ VPN:
   wireguard:
     wg0:
       description: "to HOME 1"
+      fwmark: 1
       privkey: "YGYeYj3ksy94wTABb3pDvJ7Px2WxldnAphRjft84yUI="
       port: 5566
       address: 192.168.254.5/31
@@ -44,6 +57,7 @@ VPN:
           persistent_keepalive: 15
     wg1:
       description: "to HOME 2"
+      fwmark: 2
       privkey: "OLXvk+cp7XlU5z8qwsSqrzO3Sb3o4PRENI/EbTmHunE="
       port: 5567
       address: 192.168.254.7/31
@@ -56,6 +70,7 @@ VPN:
           persistent_keepalive: 15
     wg2:
       description: "to HQ 1"
+      fwmark: 1
       privkey: "uMKvrNaGQ5wXGqPdy9l+vBf9Be2Ipx2bDlZU5H8LWmo="
       port: 5568
       address: 192.168.254.9/31
@@ -68,6 +83,7 @@ VPN:
           persistent_keepalive: 15
     wg3:
       description: "to HQ 2"
+      fwmark: 2
       privkey: "YNkUzO6bqE+tFIy1tLII40ndZOVdnqWg/1S07wfsBlY="
       port: 5569
       address: 192.168.254.11/31

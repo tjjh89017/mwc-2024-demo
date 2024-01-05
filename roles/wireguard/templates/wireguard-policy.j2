@@ -1,0 +1,12 @@
+{% if policy is defined %}
+{% for i in policy %}
+set policy local-route rule {{ i }} fwmark {{ policy[i].fwmark }}
+set policy local-route rule {{ i }} set table {{ policy[i].table }}
+{% endfor %}
+{% endif %}
+
+{% if table is defined %}
+{% for i in table %}
+set protocols static table {{ i }} route 0.0.0.0/0 next-hop {{ table[i].gateway }}
+{% endfor %}
+{% endif %}

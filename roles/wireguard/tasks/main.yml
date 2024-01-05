@@ -7,3 +7,15 @@
   vyos.vyos.vyos_config:
     src: wireguard.j2
     save: true
+
+---
+- name: Set Wireguard Policy Route
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: vyos.vyos.vyos
+    policy: "{{ hostvars[inventory_hostname][demo_name]['policy'] }}"
+    table: "{{ hostvars[inventory_hostname][demo_name]['table'] }}"
+  vyos.vyos.vyos_config:
+    src: wireguard-policy.j2
+    save: true
+
