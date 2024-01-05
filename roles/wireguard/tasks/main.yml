@@ -8,7 +8,6 @@
     src: wireguard.j2
     save: true
 
----
 - name: Set Wireguard Policy Route
   vars:
     ansible_connection: ansible.netcommon.network_cli
