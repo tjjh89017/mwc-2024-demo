@@ -2,9 +2,21 @@
 set protocols bgp system-as {{ bgp.asn }}
 set protocols bgp address-family ipv4-unicast redistribute connected
 set protocols bgp peer-group PEER address-family ipv4-unicast soft-reconfiguration inbound
+set protocols bgp peer-group PEER address-family ipv4-unicast route-map import 'WG'
 set protocols bgp peer-group PEER ebgp-multihop '64'
 set protocols bgp peer-group PEER remote-as 'external'
 {% for neighbor in bgp.neighbor %}
 set protocols bgp neighbor {{ neighbor }} peer-group 'PEER'
 {% endfor %}
+
+set policy prefix-list WG9999 description 'select default route'
+set policy prefix-list WG9999 rule 1 action 'permit'
+set policy prefix-list WG9999 rule 1 prefix '0.0.0.0/0'
+set policy route-map WG description 'filter wg bgp route'
+set policy route-map WG rule 9999 action 'deny'
+set policy route-map WG rule 9999 description 'deny default route'
+set policy route-map WG rule 9999 match ip address prefix-list 'WG9999'
+set policy route-map WG rule 10000 action 'permit'
+set policy route-map WG rule 10000 description 'allow all other'
+
 {% endif %}
