@@ -8,7 +8,9 @@ VPN:
       address: 10.2.3.2/24
   failover:
   - gateway: 10.1.3.1
+    interface: eth4
   - gateway: 10.2.3.1
+    interface: eth5
     metric: 100
   bridge:
     address: 192.168.3.1/24

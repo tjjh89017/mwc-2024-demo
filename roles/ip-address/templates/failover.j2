@@ -2,6 +2,7 @@
 {% for f in failover %}
 set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} check target {{ f.gateway }}
 set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} check type arp
+set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} interface {{ f.interface }}
 {% if f.metric is defined %}
 set protocols failover route 0.0.0.0/0 next-hop {{ f.gateway }} metric {{ f.metric }}
 {% endif %}
