@@ -42,8 +42,8 @@
       include_role:
         name: dhcp
 
-#    - name: set NAT
-#      include_role:
-#        name: nat
+    - name: set NAT
+      include_role:
+        name: nat
 #    - name: set wireguard to HQ
 #    - name: set BGP
