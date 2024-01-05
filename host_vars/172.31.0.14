@@ -7,9 +7,9 @@ VPN:
     eth5:
       address: 10.2.2.2/24
   failover:
-    - gateway: 10.1.2.1
-    - gateway: 10.2.2.1
-      metric: 100
+  - gateway: 10.1.2.1
+  - gateway: 10.2.2.1
+    metric: 100
   bridge:
     address: 192.168.2.1/24
     member:

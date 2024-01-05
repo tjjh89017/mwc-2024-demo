@@ -8,7 +8,7 @@
     src: ip.j2
     save: true
 
-- name: Set Interfaces IP Address
+- name: Set Failover
   vars:
     ansible_connection: ansible.netcommon.network_cli
     ansible_network_os: vyos.vyos.vyos
