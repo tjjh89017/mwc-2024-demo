@@ -6,3 +6,4 @@
     dhcp: "{{ hostvars[inventory_hostname][demo_name]['dhcp'] }}"
   vyos.vyos.vyos_config:
     src: dhcp.j2
+    save: true

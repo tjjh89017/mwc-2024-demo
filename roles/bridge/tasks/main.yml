@@ -1,9 +1,9 @@
 ---
-- name: Set Interfaces IP Address
+- name: Set Bridge
   vars:
     ansible_connection: ansible.netcommon.network_cli
     ansible_network_os: vyos.vyos.vyos
-    interfaces: "{{ hostvars[inventory_hostname][demo_name]['interfaces'] }}"
+    bridge: "{{ hostvars[inventory_hostname][demo_name]['bridge'] }}"
   vyos.vyos.vyos_config:
-    src: ip.j2
+    src: bridge.j2
     save: true

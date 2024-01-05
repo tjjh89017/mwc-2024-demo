@@ -1,3 +1,12 @@
 {% for i in interfaces %}
-set interface ethernet {{ i }} address {{ interfaces[i]['address'] }}
+{% set intf = interfaces[i] %}
+set interface ethernet {{ i }} address {{ intf['address'] }}
+
+{% if intf['gateway'] is defined %}
+{%     if intf['metric'] is defined %}
+set protocols static route 0.0.0.0/0 next-hop {{ intf['gateway'] }} distance {{ intf['metric'] }}
+{%     else %}
+set protocols static route 0.0.0.0/0 next-hop {{ intf['gateway'] }}
+{%     endif %}
+{% endif %}
 {% endfor %}

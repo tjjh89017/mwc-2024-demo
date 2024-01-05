@@ -6,3 +6,4 @@
     bgp: "{{ hostvars[inventory_hostname][demo_name]['bgp'] }}"
   vyos.vyos.vyos_config:
     src: bgp.j2
+    save: true

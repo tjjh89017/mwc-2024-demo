@@ -5,9 +5,9 @@ VPN:
     eth1:
       address: 10.1.1.1/24
     eth2:
-      address: 10.1.2.1/31
+      address: 10.1.2.1/24
     eth3:
-      address: 10.1.3.1/31
+      address: 10.1.3.1/24
     eth4:
       address: 10.0.0.0/31
     eth5:

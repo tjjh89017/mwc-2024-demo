@@ -1,0 +1,4 @@
+{% for i in range(nat.wan | length) %}
+set nat source rule {{ i + 1 }} outbound-interface {{ nat.wan[i] }}
+set nat source rule {{ i + 1 }} translation address masquerade
+{% endfor %}

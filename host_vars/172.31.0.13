@@ -1,3 +1,28 @@
 ---
 VPN:
   hostname: HOME
+  interfaces:
+    eth4:
+      address: 10.1.1.2/24
+      gateway: 10.1.1.1
+    eth5:
+      address: 10.2.1.2/24
+      gateway: 10.2.1.1
+      metric: 100
+  bridge:
+    address: 192.168.1.1/24
+    member:
+    - eth1
+    - eth2
+    - eth3
+  dhcp:
+    LAN1:
+      subnet: 192.168.1.0/24
+      gateway: 192.168.1.1
+      range:
+        start: 192.168.1.100
+        stop: 192.168.1.200
+  nat:
+    wan:
+    - eth4
+    - eth5

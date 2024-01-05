@@ -1,0 +1,6 @@
+{% if bridge is defined %}
+set interfaces bridge br0 address {{ bridge.address }}
+{% for i in bridge.member %}
+set interfaces bridge br0 member interface {{ i }}
+{% endfor %}
+{% endif %}

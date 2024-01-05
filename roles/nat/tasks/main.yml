@@ -1,9 +1,9 @@
 ---
-- name: Set Interfaces IP Address
+- name: Set NAT
   vars:
     ansible_connection: ansible.netcommon.network_cli
     ansible_network_os: vyos.vyos.vyos
-    interfaces: "{{ hostvars[inventory_hostname][demo_name]['interfaces'] }}"
+    nat: "{{ hostvars[inventory_hostname][demo_name]['nat'] }}"
   vyos.vyos.vyos_config:
-    src: ip.j2
+    src: nat.j2
     save: true

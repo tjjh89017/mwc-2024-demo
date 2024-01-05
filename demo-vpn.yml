@@ -25,22 +25,25 @@
       include_role:
         name: bgp
 
+- hosts: HOME, HQ, BRANCH
+  gather_facts: no
+  vars:
+    demo_name: VPN
+  tasks:
+    - name: set ip address
+      include_role:
+        name: ip-address
+
+    - name: set bridge
+      include_role:
+        name: bridge
+
     - name: set DHCP server
       include_role:
         name: dhcp
-#
-#- hosts: HOME
-#  gather_facts: no
-#  vars:
-#    demo_name: VPN
-#  tasks:
-#    - name: Test Connection
-#      ping:
-#      register: msg
-#
-#    - name: set LAN bridge
-#    - name: set DHCP LAN
-#    - name: set WAN metric
-#    - name: set NAT to WAN
+
+#    - name: set NAT
+#      include_role:
+#        name: nat
 #    - name: set wireguard to HQ
 #    - name: set BGP
