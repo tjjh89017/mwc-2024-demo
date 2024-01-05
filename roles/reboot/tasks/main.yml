@@ -1,0 +1,8 @@
+---
+- name: Reboot
+  reboot:
+    reboot_command: /sbin/reboot
+      #connect_timeout: 5
+    reboot_timeout: 1200
+  become: true
+  ignore_errors: true

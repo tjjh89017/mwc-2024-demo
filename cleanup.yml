@@ -1,0 +1,13 @@
+---
+- name: Cleanup
+  hosts: ALL
+  gather_facts: no
+  tasks:
+    - include_role:
+        name: cloud-init-cleanup
+    - include_role:
+        name: restore-default-config 
+    - include_role:
+        name: patch-frr-service
+    - include_role:
+        name: reboot

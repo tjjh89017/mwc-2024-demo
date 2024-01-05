@@ -1,0 +1,8 @@
+---
+- name: Set BGP
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: vyos.vyos.vyos
+    bgp: "{{ hostvars[inventory_hostname][demo_name]['bgp'] }}"
+  vyos.vyos.vyos_config:
+    src: bgp.j2

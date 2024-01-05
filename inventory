@@ -1,0 +1,39 @@
+[ISP1]
+172.31.0.11 ansible_ssh_user=vyos ansible_ssh_pass=vyos
+
+[ISP1:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[ISP2]
+172.31.0.12 ansible_ssh_user=vyos ansible_ssh_pass=vyos
+
+[ISP2:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[HOME]
+172.31.0.13 ansible_ssh_user=vyos ansible_ssh_pass=vyos
+
+[HOME:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[HQ]
+172.31.0.14 ansible_ssh_user=vyos ansible_ssh_pass=vyos
+
+[HQ:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[BRANCH]
+172.31.0.15 ansible_ssh_user=vyos ansible_ssh_pass=vyos
+
+[BRANCH:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+[ALL:children]
+ISP1
+ISP2
+HOME
+HQ
+BRANCH
+
+[ALL:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'

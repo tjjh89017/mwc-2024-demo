@@ -1,0 +1,5 @@
+---
+- name: Restore Config to Default
+  shell: |
+    rm -rf /config/config.boot*
+    cp /opt/vyatta/etc/config.boot.default /config/config.boot

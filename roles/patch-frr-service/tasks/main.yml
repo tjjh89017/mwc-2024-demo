@@ -1,0 +1,22 @@
+---
+- name: Patch FRR service
+  copy:
+    dest: "/etc/systemd/system/frr.service.d/override.conf"
+    content: |
+      [Unit]
+      After=vyos-router.service
+      
+      [Service]
+      LimitNOFILE=4096
+      ExecStartPre=/bin/bash -c 'mkdir -p /run/frr/config; \
+             echo "log syslog" > /run/frr/config/frr.conf; \
+             echo "log facility local7" >> /run/frr/config/frr.conf; \
+             chown frr:frr /run/frr/config/frr.conf; \
+             chmod 664 /run/frr/config/frr.conf; \
+             mount --bind /run/frr/config/frr.conf /etc/frr/frr.conf'
+  become: true
+
+- name: Reload systemd
+  shell: |
+    systemctl daemon-reload
+  become: true

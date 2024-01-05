@@ -1,0 +1,38 @@
+---
+VPN:
+  hostname: ISP2
+  interfaces:
+    eth1:
+      address: 10.2.1.1/24
+    eth2:
+      address: 10.2.2.1/31
+    eth3:
+      address: 10.2.3.1/31
+    eth4:
+      address: 10.0.0.1/31
+    eth5:
+      address: 10.0.0.3/31
+  bgp:
+    asn: 65002
+    neighbor:
+    - 10.0.0.0
+    - 10.0.0.2
+  dhcp:
+    LAN1:
+      subnet: 10.2.1.0/24
+      gateway: 10.2.1.1
+      range:
+        start: 10.2.1.2
+        stop: 10.2.1.100
+    LAN2:
+      subnet: 10.2.2.0/24
+      gateway: 10.2.2.1
+      range:
+        start: 10.2.2.2
+        stop: 10.2.2.100
+    LAN3:
+      subnet: 10.2.3.0/24
+      gateway: 10.2.3.1
+      range:
+        start: 10.2.3.2
+        stop: 10.2.3.100

@@ -1,0 +1,5 @@
+---
+- name: Cloud-init clean
+  shell: |
+    cloud-init clean --logs
+  become: true

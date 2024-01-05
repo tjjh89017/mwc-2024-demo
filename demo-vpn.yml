@@ -1,0 +1,46 @@
+---
+- hosts: ALL
+  gather_facts: no
+  vars:
+    demo_name: VPN
+  tasks:
+    - name: Test Connection
+      ping:
+      register: msg
+
+    - name: set hostname
+      include_role:
+        name: hostname
+
+- hosts: ISP1, ISP2
+  gather_facts: no
+  vars:
+    demo_name: VPN
+  tasks:
+    - name: set ip address
+      include_role:
+        name: ip-address
+
+    - name: set bgp with ISP
+      include_role:
+        name: bgp
+
+    - name: set DHCP server
+      include_role:
+        name: dhcp
+#
+#- hosts: HOME
+#  gather_facts: no
+#  vars:
+#    demo_name: VPN
+#  tasks:
+#    - name: Test Connection
+#      ping:
+#      register: msg
+#
+#    - name: set LAN bridge
+#    - name: set DHCP LAN
+#    - name: set WAN metric
+#    - name: set NAT to WAN
+#    - name: set wireguard to HQ
+#    - name: set BGP
