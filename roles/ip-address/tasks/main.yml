@@ -12,7 +12,7 @@
   vars:
     ansible_connection: ansible.netcommon.network_cli
     ansible_network_os: vyos.vyos.vyos
-    failver: "{{ hostvars[inventory_hostname][demo_name]['failover'] }}"
+    failover: "{{ hostvars[inventory_hostname][demo_name]['failover'] }}"
   vyos.vyos.vyos_config:
     src: failover.j2
     save: true
