@@ -6,6 +6,7 @@ set interfaces wireguard {{ name }} address {{ wg.address }}
 set interfaces wireguard {{ name }} private-key "{{ wg.privkey }}"
 set interfaces wireguard {{ name }} port "{{ wg.port }}"
 set interfaces wireguard {{ name }} fwmark "{{ wg.fwmark }}"
+set interfaces wireguard {{ name }} ip adjust-mss 1380
 {%     for peer_name in wg.peer %}
 {%     set peer = wg.peer[peer_name]%}
 set interfaces wireguard {{ name }} peer {{ peer_name}} public-key "{{ peer.pubkey }}"
