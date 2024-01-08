@@ -45,6 +45,7 @@ vyos_config_commands:
     - disconnect some cables, and test PC connection to each other
     - login into some vyos, show CLI and destroy some config, and use Ansible cleanup and demo-vpn to rebuild the demo
         - `ansible-playbook -l 172.31.0.13 cleanup.yml demo-vpn.yml`
+
 ## Demo VPN
 
 - BGP
@@ -65,3 +66,8 @@ vyos_config_commands:
 - HOME, HQ, BRANCH are office router with two failover uplink
 - HOME, HQ, BRANCH are wireguard connected (full mesh)
 - HOME, HQ, BRANCH's BGPs are over wireguard tunnels (failover)
+
+### NOTE
+
+- boot deployment first and wait for dhcp server ready
+    - Otherwise, VyOS might not get DHCP IP immediately
