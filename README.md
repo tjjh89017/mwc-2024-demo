@@ -45,4 +45,23 @@ vyos_config_commands:
     - disconnect some cables, and test PC connection to each other
     - login into some vyos, show CLI and destroy some config, and use Ansible cleanup and demo-vpn to rebuild the demo
         - `ansible-playbook -l 172.31.0.13 cleanup.yml demo-vpn.yml`
+## Demo VPN
 
+- BGP
+- NAT
+- failover
+- BGP over Wireguard VPN
+- Ansible auto deployment
+- Cloud-init init script demo
+- CLI demo
+- fast replacement demo
+
+### Architecture
+
+- All devices are using OOB as mgmt port for ansible deployment
+- ISP1 and ISP2 are internet emulation
+- ISP1 and ISP2 have BGP sessions with each other
+- HOME, HQ, BRANCH are all NATed to ISP1 or ISP2
+- HOME, HQ, BRANCH are office router with two failover uplink
+- HOME, HQ, BRANCH are wireguard connected (full mesh)
+- HOME, HQ, BRANCH's BGPs are over wireguard tunnels (failover)
