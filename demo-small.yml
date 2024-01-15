@@ -1,0 +1,34 @@
+---
+- hosts: V1,V2,V3
+  gather_facts: no
+  vars:
+    demo_name: SMALL
+  tasks:
+    - name: Test Connection
+      ping:
+      register: msg
+
+    - name: set hostname
+      include_role:
+        name: hostname
+
+    - name: set ip address
+      include_role:
+        name: ip-address
+
+    - name: set bgp
+      include_role:
+        name: bgp
+
+    - name: set bridge
+      include_role:
+        name: bridge
+
+    - name: set DHCP server
+      include_role:
+        name: dhcp
+
+    - name: set NAT
+      include_role:
+        name: nat
+
