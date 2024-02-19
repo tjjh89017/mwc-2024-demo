@@ -29,6 +29,17 @@ SMALL:
     wan:
     - eth4
     - eth5
+  wireguard:
+    wg0:
+      description: "VPN"
+      privkey: "EDaHikWWkPWqVDhD/88vTehXoSxjejeh55XyoZCMeUM="
+      port: 5566
+      address: 192.168.254.1./24
+      peer:
+        user1:
+          pubkey: "BKuH89v0tGkaWGdHtwCKLUZN0MfRmkQoWd7COLB/41o="
+          allowed_ips: "192.168.254.2/32"
+          persistent_keepalive: 15
 VPN:
   hostname: HOME
   interfaces:
