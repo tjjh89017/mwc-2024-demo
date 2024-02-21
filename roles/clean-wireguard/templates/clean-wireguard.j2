@@ -1,0 +1,5 @@
+{% if wireguard is defined %}
+{% for name in wireguard %}
+delete interfaces wireguard {{ name }}
+{% endfor %}
+{% endif %}

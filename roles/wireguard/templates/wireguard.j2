@@ -10,10 +10,12 @@ set interfaces wireguard {{ name }} fwmark "{{ wg.fwmark }}"
 {%     endif %}
 set interfaces wireguard {{ name }} ip adjust-mss 1380
 {%     for peer_name in wg.peer %}
-{%     set peer = wg.peer[peer_name]%}
+{%         set peer = wg.peer[peer_name]%}
 set interfaces wireguard {{ name }} peer {{ peer_name}} public-key "{{ peer.pubkey }}"
+{%         if peer.address is defined %}
 set interfaces wireguard {{ name }} peer {{ peer_name}} address "{{ peer.address }}"
 set interfaces wireguard {{ name }} peer {{ peer_name}} port "{{ peer.port }}"
+{%         endif %}
 set interfaces wireguard {{ name }} peer {{ peer_name}} allowed-ips "{{ peer.allowed_ips }}"
 set interfaces wireguard {{ name }} peer {{ peer_name}} persistent-keepalive "{{ peer.persistent_keepalive }}"
 {%     endfor %}

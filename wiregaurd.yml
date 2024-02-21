@@ -1,0 +1,10 @@
+---
+- hosts: V3
+  gather_facts: no
+  vars:
+    demo_name: SMALL
+  tasks:
+    - name: set wireguard
+      include_role:
+        name: wireguard
+
